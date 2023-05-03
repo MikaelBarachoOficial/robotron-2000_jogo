@@ -55,14 +55,16 @@ main {
     line-height: 0.8;
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    color: rgba(255,255,255,0.8)
+    color: rgba(255,255,255,0.8);
+
 }
 
 .box {
     background: rgba(0,0,0,0.6);
     clip-path: polygon(calc(100% - 30px) 0, 100% 30px, 100% calc(100% - 30px), calc(100% - 30px) 100%, 30px 100%, 0 calc(100% - 30px), 0 30px, 30px 0);
     border-left: 5px solid var(--main-cinza);
-    height: 80%;
+    height: auto;
+    
 }
 
 /****************************** Equipamentos *****/
@@ -154,6 +156,8 @@ main {
 .estatisticas {
     flex-basis: 23%;
     padding: 2em 2em 0;
+
+    
 }
 
 .estatistica {
@@ -161,8 +165,7 @@ main {
     display: flex;
     align-items: flex-start;
     height: 25%;
-    
-    
+
 }
 
 .estatistica-titulo {
@@ -170,7 +173,8 @@ main {
     border-bottom: 1px solid var(--main-cinza);
     flex-basis: 40%;
     text-transform: uppercase;
-    order: 1
+    order: 1;
+    
 }
 
 .estatistica-valor {

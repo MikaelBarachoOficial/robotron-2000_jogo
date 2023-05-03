@@ -7,7 +7,7 @@
     <link rel="shortcut icon" type="image/jpg" href="img/favicon.ico"/>
     <title>Robotron 2000</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;500&display=swap" rel="stylesheet"> 
@@ -52,9 +52,9 @@
                     <div class="peca">
                         <label for="" class="peca-titulo">Braços</label>
                         <div class="controle">
-                            <buttom class="controle-ajuste">-</buttom>
-                            <input type="text" class="controle-contador" value="00">
-                            <buttom class="controle-ajuste">+</buttom>
+                            <buttom class="controle-ajuste" id="subtrair">-</buttom>
+                            <input type="text" class="controle-contador" id="bracos" value="00">
+                            <buttom class="controle-ajuste" id="soma">+</buttom>
                         </div>
                     </div>
                     <hr class="linha">
@@ -62,7 +62,7 @@
                         <label for="" class="peca-titulo">Blindagem</label>
                         <div class="controle">
                             <buttom class="controle-ajuste">-</buttom>
-                            <input type="text" class="controle-contador" value="00">
+                            <input type="text" class="controle-contador" id="blindagem" value="00">
                             <buttom class="controle-ajuste">+</buttom>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                         <label for="" class="peca-titulo">Núcleos</label>
                         <div class="controle">
                             <buttom class="controle-ajuste">-</buttom>
-                            <input type="text" class="controle-contador" value="00">
+                            <input type="text" class="controle-contador" id="nucleos" value="00">
                             <buttom class="controle-ajuste">+</buttom>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                         <label for="" class="peca-titulo">Pernas</label>
                         <div class="controle">
                             <buttom class="controle-ajuste">-</buttom>
-                            <input type="text" class="controle-contador" value="00">
+                            <input type="text" class="controle-contador" id="pernas" value="00">
                             <buttom class="controle-ajuste">+</buttom>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                         <label for="" class="peca-titulo">Foguetes</label>
                         <div class="controle">
                             <buttom class="controle-ajuste">-</buttom>
-                            <input type="text" class="controle-contador" value="00">
+                            <input type="text" class="controle-contador" id="foguetes" value="00">
                             <buttom class="controle-ajuste">+</buttom>
                         </div>
                     </div>
@@ -98,5 +98,6 @@
             </form>
         </section>
     </main>
+    <script src="./scripts/main.js"></script>
 </body>
 </html>
