@@ -1,20 +1,21 @@
-const soma = document.querySelector('#soma');
-const subtrai = document.querySelector('#subtrair');
+const ajuste = document.querySelectorAll('.controle-ajuste');
 
-const ajuste = document.querySelector('.controle-ajuste');
+ajuste.forEach(elemento => {
+    console.log(elemento);
+    elemento.addEventListener('click', evento => {
+        
+        manipulaDados(evento.target.textContent, evento.target.parentNode);
+        
+    });
+});
 
-const braco = document.querySelector('#bracos');
+function manipulaDados (sinal, controle) {
+    const peca = controle.querySelector('.controle-contador');
 
-soma.addEventListener('click', () => { manipulaDados(soma) });
-
-subtrai.addEventListener('click', () => { manipulaDados(subtrai) });
-
-function manipulaDados (elemento) {
-
-    if (elemento == soma) {
-        braco.value = parseInt(braco.value) + 1;
-    } else if (elemento == subtrai) {
-        braco.value = parseInt(braco.value) - 1;
+    if (sinal == '+') {
+        peca.value = parseInt(peca.value) + 1;
+    } else if (sinal == '-' && peca.value > 0) {
+        peca.value = parseInt(peca.value) - 1;
     }
 
 }
