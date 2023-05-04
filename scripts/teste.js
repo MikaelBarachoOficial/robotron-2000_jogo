@@ -1,28 +1,21 @@
 const ajuste = document.querySelectorAll('.controle-ajuste');
 
 ajuste.forEach(elemento => {
-    console.log(elemento);
     elemento.addEventListener('click', evento => {
-        //console.log(elemento);
-        //console.log(evento);
+       
+        controlaAjuste(evento.target.textContent, evento.target.parentNode);
 
-        // console.log(elemento.textContent);
-        // console.log(evento.target.textContent);
+    })
+})
 
-        //console.log(evento.target.parentNode);
-        
-        manipulaDados(evento.target.textContent, evento.target.parentNode);
-        
-    });
-});
+function controlaAjuste (sinal, peca) {
+    const contador = peca.querySelector('.controle-contador');
+    
+    if (sinal == '-' && contador.value > 0) {
+        contador.value--
+    
+    } else if (sinal == '+') {
+        contador.value++
 
-function manipulaDados (sinal, controle) {
-    const peca = controle.querySelector('.controle-contador');
-
-    if (sinal == '+') {
-        peca.value = parseInt(peca.value) + 1;
-    } else if (sinal == '-' && peca.value > 0) {
-        peca.value = parseInt(peca.value) - 1;
     }
-
 }
