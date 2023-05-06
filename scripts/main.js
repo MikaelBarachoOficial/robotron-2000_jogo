@@ -49,16 +49,22 @@ function manipulaDados (sinal, controle, peca) {
         let numero = estatistica.textContent;
 
         if (sinal == '+') {
-            contaPeca.value = parseInt(contaPeca.value) + 1;
             numero = parseInt(numero) + pecas[peca][nome];
-
         } else if (sinal == '-' && contaPeca.value > 0) {
-            contaPeca.value = parseInt(contaPeca.value) - 1;
             numero = parseInt(numero) - pecas[peca][nome];
-
         }
+        
             estatistica.textContent = numero;
 
     })
 
+    if (sinal == '+') {
+        contaPeca.value = parseInt(contaPeca.value) + 1;
+            
+
+    } else if (sinal == '-' && contaPeca.value > 0) {
+        contaPeca.value = parseInt(contaPeca.value) - 1;
+            
+
+        }
 }
