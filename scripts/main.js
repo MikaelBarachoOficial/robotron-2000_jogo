@@ -1,4 +1,5 @@
-const ajuste = document.querySelectorAll('[data-controle]');
+const botoes = document.querySelectorAll('[data-controle]');
+const estatisticas = document.querySelectorAll('[data-estatistica]');
 const pecas = {
     "bracos": {
         "forca": 29,
@@ -13,18 +14,21 @@ const pecas = {
         "energia": 0,
         "velocidade": -20
     },
+
     "nucleos":{
         "forca": 0,
         "poder": 7,
         "energia": 48,
         "velocidade": -24
     },
+
     "pernas":{
         "forca": 27,
         "poder": 21,
         "energia": -32,
         "velocidade": 42
     },
+
     "foguetes":{
         "forca": 0,
         "poder": 28,
@@ -32,39 +36,44 @@ const pecas = {
         "velocidade": -2
     }
 }
-const estatisticas = document.querySelectorAll('[data-estatistica]');
+const corSelecao = document.querySelector('[data-corSelecao]');
+const robo = document.querySelector('.robo')
 
-ajuste.forEach(elemento => {
-    elemento.addEventListener('click', evento => {
-        const sinal = evento.target.dataset.controle;
-        manipulaDados(sinal, evento.target.parentNode, evento.target.dataset.peca);
-    });
-});
+robo.src = `../img/robotron-cores/Robotron 2000 - ${corSelecao.value}/robotron.png`
 
-function manipulaDados (sinal, controle, peca) {
-    const contaPeca = controle.querySelector('[data-contador]');
-    
+//Customização
+corSelecao.addEventListener('change', evento => {
+    robo.src = `../img/robotron-cores/Robotron 2000 - ${corSelecao.value}/robotron.png`
+})
+
+//Funcionalidade
+botoes.forEach(botao => {
+    botao.addEventListener('click', evento => {
+        manipulaDados (evento.target.dataset.controle, evento.target.parentNode, evento.target.dataset.peca)
+    })
+})
+
+
+function manipulaDados (sinal, paiContador, peca) {
+
+    const valorContador = paiContador.querySelector('[data-contador]');
+
     estatisticas.forEach(estatistica => {
-        const nome = estatistica.dataset.estatistica;
-        let numero = estatistica.textContent;
-
-        if (sinal == '+') {
-            numero = parseInt(numero) + pecas[peca][nome];
-        } else if (sinal == '-' && contaPeca.value > 0) {
-            numero = parseInt(numero) - pecas[peca][nome];
-        }
+        if (sinal == '-' && valorContador.value > 0) {
+            estatistica.textContent = parseInt(estatistica.textContent) - pecas[peca][estatistica.dataset.estatistica]
         
-            estatistica.textContent = numero;
-
+        } else if (sinal == '+') {
+            estatistica.textContent = parseInt(estatistica.textContent) + pecas[peca][estatistica.dataset.estatistica]
+        
+        }
     })
 
-    if (sinal == '+') {
-        contaPeca.value = parseInt(contaPeca.value) + 1;
-            
+    if (sinal == '-' && valorContador.value > 0) {
+        valorContador.value = parseInt(valorContador.value) - 1
 
-    } else if (sinal == '-' && contaPeca.value > 0) {
-        contaPeca.value = parseInt(contaPeca.value) - 1;
-            
+    } else if (sinal == '+') {
+        valorContador.value = parseInt(valorContador.value) + 1
 
-        }
+    }
+
 }

@@ -152,7 +152,19 @@ main {
     color: var(--main-branco)
 }
 
+.selecionaCor{
+    cursor: pointer;
+}
 
+.robotron {
+    position: relative;
+    z-index: 1;
+}
+
+.robotron select.selecionaCor {
+    position: relative;
+    z-index: 2;
+}
 
 /****************************** Estatísticas *****/
 .estatisticas {
