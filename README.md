@@ -6,5 +6,5 @@
 | ---------------- | ------ |
 | HTML  | Finalizado |
 | CSS   | Finalizado |
-| Javascript  | Finalizado |
+| Javascript  | Finalizado (com localStorage) |
 | Customização de cor | Finalizado (com localStorage) |

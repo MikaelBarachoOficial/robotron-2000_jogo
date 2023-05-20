@@ -36,6 +36,29 @@ const pecas = {
         "velocidade": -2
     }
 }
+var contadoresPecas = ['bracos', 'blindagem', 'nucleos', 'pernas', 'foguetes']
+var estatisticasNomes = ['forca', 'poder', 'energia', 'velocidade']
+
+contadoresPecas.forEach(contadorPeca => {
+    let contadorAtual = document.querySelector(`[data-contador="${contadorPeca}"]`)
+    let contadorSalvo = localStorage.getItem(contadorPeca)
+
+    if (contadorSalvo != null) {
+        
+        contadorAtual.value = contadorSalvo
+    }
+})
+
+estatisticasNomes.forEach(estatistica => {
+    let estatisticaAtual = document.querySelector(`[data-estatistica=${estatistica}]`)
+    let estatisticaSalva = localStorage.getItem(estatistica)
+
+    if (estatisticaSalva != null) {
+        estatisticaAtual.textContent = estatisticaSalva
+    }
+})
+
+
 
 botoes.forEach(botao => {
     botao.addEventListener('click', evento => {
@@ -62,6 +85,7 @@ function manipulaDados(sinal, contador, peca) {
 
         }
 
+        localStorage.setItem(nomeEstatistica, estatistica.textContent)
     })
     
     //CONTADOR
@@ -74,5 +98,7 @@ function manipulaDados(sinal, contador, peca) {
         contador.value = parseInt(contador.value) - 1
 
     }
+
+    localStorage.setItem(peca, contador.value)
 
 }
