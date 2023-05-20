@@ -7,4 +7,4 @@
 | HTML  | Finalizado |
 | CSS   | Finalizado |
 | Javascript  | Finalizado |
-| Customização de cor | Finalizado |
+| Customização de cor | Finalizado (com localStorage) |

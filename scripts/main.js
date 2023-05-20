@@ -1,5 +1,5 @@
-const botoes = document.querySelectorAll('[data-controle]');
-const estatisticas = document.querySelectorAll('[data-estatistica]');
+const botoes = document.querySelectorAll('[data-controle]')
+const estatisticas = document.querySelectorAll('[data-estatistica]')
 const pecas = {
     "bracos": {
         "forca": 29,
@@ -36,43 +36,42 @@ const pecas = {
         "velocidade": -2
     }
 }
-const corSelecao = document.querySelector('[data-corSelecao]');
-const robo = document.querySelector('.robo')
 
-robo.src = `../img/robotron-cores/Robotron 2000 - ${corSelecao.value}/robotron.png`
-
-//Customização
-corSelecao.addEventListener('change', evento => {
-    robo.src = `../img/robotron-cores/Robotron 2000 - ${corSelecao.value}/robotron.png`
-})
-
-//Funcionalidade
 botoes.forEach(botao => {
     botao.addEventListener('click', evento => {
-        manipulaDados (evento.target.dataset.controle, evento.target.parentNode, evento.target.dataset.peca)
+
+        let valorContador = evento.target.parentNode.querySelector('[data-contador]')
+        let sinal = evento.target.dataset.controle
+        let peca = evento.target.dataset.peca
+
+        manipulaDados(sinal, valorContador, peca)
+
     })
 })
 
-
-function manipulaDados (sinal, paiContador, peca) {
-
-    const valorContador = paiContador.querySelector('[data-contador]');
+function manipulaDados(sinal, contador, peca) {
 
     estatisticas.forEach(estatistica => {
-        if (sinal == '-' && valorContador.value > 0) {
-            estatistica.textContent = parseInt(estatistica.textContent) - pecas[peca][estatistica.dataset.estatistica]
+        let nomeEstatistica = estatistica.dataset.estatistica
+
+        if (sinal == '+') {
+            estatistica.textContent = Number(estatistica.textContent) + pecas[peca][nomeEstatistica]
         
-        } else if (sinal == '+') {
-            estatistica.textContent = parseInt(estatistica.textContent) + pecas[peca][estatistica.dataset.estatistica]
-        
+        } else if (sinal == '-' && contador.value > 0) {
+            estatistica.textContent = Number(estatistica.textContent) - pecas[peca][nomeEstatistica]
+
         }
+
     })
+    
+    //CONTADOR
+    if (sinal == '+') {
+        
+        contador.value = parseInt(contador.value) + 1
 
-    if (sinal == '-' && valorContador.value > 0) {
-        valorContador.value = parseInt(valorContador.value) - 1
-
-    } else if (sinal == '+') {
-        valorContador.value = parseInt(valorContador.value) + 1
+    } else if (sinal == '-' && contador.value > 0) {
+        
+        contador.value = parseInt(contador.value) - 1
 
     }
 
